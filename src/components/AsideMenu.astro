@@ -5,7 +5,7 @@ import HomeIcon from "../icons/Home.astro";
 import SearchIcon from "../icons/Search.astro";
 ---
 
-<nav class="flex flex-col flex-2 gap-2">
+<nav class="flex flex-col gap-2 flex-1">
   <div class="bg-zinc-900 rounded-lg p-2">
     <ul>
       <SideMenuItem href="/">
@@ -18,5 +18,12 @@ import SearchIcon from "../icons/Search.astro";
       </SideMenuItem>
     </ul>
   </div>
-  <LibraryIcon />
+  <div class="bg-zinc-900 rounded-lg p-2 flex-1">
+    <ul>
+      <SideMenuItem href="/#">
+        <LibraryIcon />
+        Tu biblioteca
+      </SideMenuItem>
+    </ul>
+  </div>
 </nav>
