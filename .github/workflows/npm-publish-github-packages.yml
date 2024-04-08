@@ -1,4 +1,3 @@
-
 name: Daily Dependency Update
 
 on:
@@ -23,11 +22,7 @@ jobs:
         run: |
           git config --global user.email "actions@users.noreply.github.com"
           git config --global user.name "GitHub Actions"
-          git config --global credential.helper 'store --file token.txt'
-          echo ${{ secrets.GH_TOKEN }} > token.txt
-
-      - name: Commit changes
-        run: |
+          export CURRENT_DATE=$(date +'%Y-%m-%d')
           git add .
-          git commit -m "Automated dependency update"
+          git commit -m "Automated dependency update - $CURRENT_DATE"
           git push
