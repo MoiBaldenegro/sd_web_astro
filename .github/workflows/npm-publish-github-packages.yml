@@ -2,7 +2,7 @@ name: Daily Dependency Update
 
 on:
   schedule:
-    - cron: '50 3 * * *' # Ejecutar todos los días a las 5:45 AM UTC
+    - cron: '20 4 * * *' # Ejecutar todos los días a las 5:45 AM UTC
 
 jobs:
   update-dependencies:
@@ -22,7 +22,12 @@ jobs:
         run: |
           git config --global user.email "actions@users.noreply.github.com"
           git config --global user.name "GitHub Actions"
-          export CURRENT_DATE=$(date +'%Y-%m-%d')
+          git config --global credential.helper 'store --file ~/.git-credentials'
+          echo "https://${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
+
+      - name: Commit changes
+        run: |
           git add .
           git commit -m "Automated dependency update - $CURRENT_DATE"
           git push
+
