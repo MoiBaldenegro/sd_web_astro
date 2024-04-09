@@ -31,4 +31,3 @@ jobs:
           git add .
           git commit -m "Automated dependency update - $CURRENT_DATE"
           git push
-
