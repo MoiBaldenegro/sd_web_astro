@@ -2,7 +2,7 @@ name: Daily Dependency Update
 
 on:
   schedule:
-    - cron: '45 5 * * *' # Ejecutar todos los días a las 5:45 AM UTC
+    - cron: '36 3 * * *' # Ejecutar todos los días a las 5:45 AM UTC
 
 jobs:
   update-dependencies:
