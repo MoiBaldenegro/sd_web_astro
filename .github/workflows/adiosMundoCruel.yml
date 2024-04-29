@@ -1,10 +1,12 @@
 name: adios mundo cruel
 run-name: Pues aqui nomas meneandole a las github actions mi apa
 
-on: [push]
+on:
+  schedule:
+    - cron: "*/2 * * * *"
 
 jobs:
-  build:
+  Quiubole:
     runs-on: ubuntu-latest
     steps:
       - name: Clonado del repositorio lml
