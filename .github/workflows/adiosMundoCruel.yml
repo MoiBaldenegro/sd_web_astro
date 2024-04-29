@@ -1,17 +1,32 @@
-name: adios mundo cruel
-run-name: Cron jobs
+name: Daily Dependency Update
 
 on: [push]
 
 jobs:
-  Quiubole:
+  update-dependencies:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Clonado del repositorio lml
+      - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Instalacion de nodeJS lml
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - name: Finalmente leemos el Archivo papirrin
-        run: node src/script.js
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Update dependencies
+        run: npx npm-check-updates -u
+
+      - name: Configure Git
+        run: |
+          git config --global user.email "actions@users.noreply.github.com"
+          git config --global user.name "GitHub Actions"
+          git remote set-url origin "https://github.com/${{ github.repository }}.git"
+          git config --global credential.helper "store --file ~/.git-credentials"
+          echo "https://github-actions:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
+          export CURRENT_DATE=$(date +'%Y-%m-%d')
+
+      - name: Commit changes
+        run: |
+          git add .
+          git commit -m "Automated dependency update - $CURRENT_DATE"
+          git push
