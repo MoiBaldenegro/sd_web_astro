@@ -2,6 +2,9 @@ name: Daily Dependency Update
 
 on: [push]
 
+env:
+  variable_de_entorno: "Esta es una variable de entorno papa"
+
 jobs:
   update-dependencies:
     runs-on: ubuntu-latest
@@ -15,3 +18,5 @@ jobs:
           node-version: 20
       - name: Impresion
         run: echo "${{github.actor}}"
+      - name: Impriomir variablr de entorno a nivel de wokflow
+        run: echo "la variable es ${{env.variable_de_entorno}}"
