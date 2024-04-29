@@ -1,9 +1,7 @@
-
-
 name: adios mundo cruel
 
 on: [push]
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,7 +9,5 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 20
       - run: node script.js
-
- 
