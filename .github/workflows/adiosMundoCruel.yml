@@ -1,9 +1,7 @@
 name: adios mundo cruel
-run-name: Pues aqui nomas meneandole a las github actions mi apa
+run-name: Cron jobs
 
-on:
-  schedule:
-    - cron: "*/1 * * * *"
+on: [push]
 
 jobs:
   Quiubole:
