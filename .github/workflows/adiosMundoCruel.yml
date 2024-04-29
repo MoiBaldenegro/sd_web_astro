@@ -22,7 +22,7 @@ jobs:
           git config --global user.name "GitHub Actions"
           git remote set-url origin "https://github.com/${{ github.repository }}.git"
           git config --global credential.helper "store --file ~/.git-credentials"
-          echo "https://github-actions:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
+          echo "https://github-actions:${{ secrets.TOKEN_TB }}@github.com" > ~/.git-credentials
           export CURRENT_DATE=$(date +'%Y-%m-%d')
 
       - name: Commit changes
