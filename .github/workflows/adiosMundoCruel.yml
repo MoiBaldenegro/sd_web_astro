@@ -3,7 +3,7 @@ run-name: Pues aqui nomas meneandole a las github actions mi apa
 
 on:
   schedule:
-    - cron: "*/2 * * * *"
+    - cron: 0/2 * * * *
 
 jobs:
   Quiubole:
