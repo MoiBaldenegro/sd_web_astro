@@ -14,4 +14,4 @@ jobs:
         with:
           node-version: 20
       - name: Impresion
-        run: " ${{github.actor}}"
+        run: echo "${{github.actor}}"
