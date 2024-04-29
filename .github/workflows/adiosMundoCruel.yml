@@ -9,24 +9,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Update dependencies
-        run: npx npm-check-updates -u
-
-      - name: Configure Git
-        run: |
-          git config --global user.email "mc.moisesm16@gmail.com"
-          git config --global user.name "Moises Baldenegro Melendez"
-          git remote set-url origin "https://github.com/${{ github.repository }}.git"
-          git config --global credential.helper "store --file ~/.git-credentials"
-          echo "https://github-actions:${{ secrets.TOKEN_TB }}@github.com" > ~/.git-credentials
-          export CURRENT_DATE=$(date +'%Y-%m-%d')
-
-      - name: Commit changes
-        run: |
-          git add .
-          git commit -m "Automated dependency update - $CURRENT_DATE"
-          git push
+      - name: Instalacion de node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Impresion
+        run: " ${{github.actor}}"
