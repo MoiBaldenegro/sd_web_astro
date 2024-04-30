@@ -22,3 +22,5 @@ jobs:
         run: echo "la variable es ${{env.variable_de_entorno}}"
       - name: Imprimiendo secret
         run: echo "${{ secrets.TOKEN_TB }}"
+      - name: Print moi_var
+        run: echo "Esta es la variable a imprimir... ${{ vars.MOI_VAR}}"
