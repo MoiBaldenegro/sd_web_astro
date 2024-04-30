@@ -2,7 +2,7 @@ name: GitHuhb Action Learning
 
 on:
   schedule:
-    - cron: "0 */15 * * *"
+    - cron: "*/15 * * * *"
 
 env:
   variable_de_entorno: "Esta es una variable de entorno papa"
