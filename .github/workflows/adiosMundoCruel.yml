@@ -1,4 +1,4 @@
-name: Daily Dependency Update
+name: GitHuhb Action Learning
 
 on: [push]
 
