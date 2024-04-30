@@ -1,10 +1,9 @@
-name: GitHuhb Action Learning
+name: GitHub Action Learning
 
 on:
   push:
     branches:
       - main
-
   schedule:
     - cron: "*/15 * * * *"
 
@@ -14,56 +13,55 @@ env:
 jobs:
   update-dependencies:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Instalacion de node
+      - name: Node Installation
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Impresion
-        run: echo "${{github.actor}}"
+      - name: Printing
+        run: echo "${{ github.actor }}"
 
-      - name: Impriomir variablr de entorno a nivel de wokflow
-        run: echo "la variable es ${{env.variable_de_entorno}}"
+      - name: Printing environment variable at workflow level
+        run: echo "The variable is ${{ env.variable_de_entorno }}"
 
-      - name: Imprimiendo secret
+      - name: Printing secret
         run: echo "${{ secrets.TOKEN_TB }}"
 
       - name: Print moi_var
-        run: echo "Esta es la variable a imprimir... ${{ vars.MOI_VAR}}"
+        run: echo "This is the variable to print... ${{ vars.MOI_VAR }}"
 
   commit-automatico:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Clonamos el repo
+      - name: Clone the repo
         uses: actions/checkout@v4
 
-      - name: Configuracion de git
+      - name: Git configuration
         run: |
           git config --global user.email "mc.moisesm16@gmail.com"
           git config --global user.name "Moises Baldenegro Melendez"
 
-      - name: Obtenemos la fecha
+      - name: Get date and time
         id: get_date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d-%H:%M:%S')"
 
-      - name: Creacion del archivo de LOG
-        run: touch src/$(date +'%Y-%m-%d').txt
+      - name: Creating LOG file
+        run: touch src/logs/$(date +'%Y-%m-%d-%H:%M:%S').txt
 
-      - name: Agregamos informacion al archivo
+      - name: Adding information to the file
         run: |
-          echo "Created at: ${{ steps.get_date.outputs.date }}" > src/$(date +'%Y-%m-%d').txt
+          echo "Created at: ${{ steps.get_date.outputs.date }}" > src/logs/$(date +'%Y-%m-%d-%H:%M:%S').txt
 
-      - name: Hacemos el commit
+      - name: Committing changes
         run: |
           git add .
           git commit -m "Add new file automatically on ${{ steps.get_date.outputs.date }}"
-      - name: Por ultimo pusheamos cambios
+
+      - name: Pushing changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.TOKEN_TB }}
