@@ -39,7 +39,7 @@ jobs:
 
       - name: Configuracion de git
         run: |
-          git config --global user.mail "mc.moisesm16@gmail.com"
+          git config --global user.email "mc.moisesm16@gmail.com"
           git config --global user.name "Moises Baldenegro Melendez"
 
       - name: Obtenemos la fecha
