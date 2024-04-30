@@ -20,3 +20,5 @@ jobs:
         run: echo "${{github.actor}}"
       - name: Impriomir variablr de entorno a nivel de wokflow
         run: echo "la variable es ${{env.variable_de_entorno}}"
+      - name: Imprimiendo secret
+        run: echo "${{ secrets.TOKEN_TB }}"
