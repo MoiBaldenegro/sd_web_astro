@@ -1,6 +1,10 @@
 name: GitHuhb Action Learning
 
 on:
+  push:
+    branches:
+      - main
+
   schedule:
     - cron: "*/15 * * * *"
 
