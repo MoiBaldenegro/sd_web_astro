@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "* */3 * * *"
 
 env:
   variable_de_entorno: "Esta es una variable de entorno papa"
